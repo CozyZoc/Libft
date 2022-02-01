@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: discovery <marvin@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 18:09:06 by discovery         #+#    #+#             */
-/*   Updated: 2022/02/01 17:56:18 by discovery        ###   ########.fr       */
+/*   Created: 2022/02/01 15:05:39 by discovery         #+#    #+#             */
+/*   Updated: 2022/02/01 16:25:56 by discovery        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "libft.h"
 
-void *ft_memmove(void *dst, const void *src, size_t n)
+size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int i;
+	size_t	i;
 
-	char *s;
-	s = (char *)src;
-	char *d;
-	d = (char *)dst;
-	
 	i = 0;
-	while (s[i] && i < n)
-		i++;
-	while (i >= 0)
+	if (dstsize != 0)
 	{
-		d[i] = s[i];
-		i--;
+		while (src[i] && i < dstsize - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	d[i] = '\0';
-	return (dst);
+	return (ft_strlen(src));
 }
-int main(void)
+int main()
 {
-	char src[] = "Hello";
-	char dst[10];
-
-	ft_memmove(dst, src, 7);
-	printf("%s", dst);
-	return(0);
+	char dest[20] = "hello";
+	const char src[20] = "he";
+	printf("%zu", ft_strlcpy(dest, src, 10));
 }
-

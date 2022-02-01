@@ -1,44 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: discovery <marvin@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 18:09:06 by discovery         #+#    #+#             */
-/*   Updated: 2022/02/01 17:56:18 by discovery        ###   ########.fr       */
+/*   Created: 2022/02/01 15:21:43 by discovery         #+#    #+#             */
+/*   Updated: 2022/02/01 16:02:33 by discovery        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef LIBFT_H
+# define LIBFT_H
 
-void *ft_memmove(void *dst, const void *src, size_t n)
-{
-	int i;
+# include <stdio.h>
+# include <stdlib.h>
+# include <stddef.h>
+# include <unistd.h>
 
-	char *s;
-	s = (char *)src;
-	char *d;
-	d = (char *)dst;
-	
-	i = 0;
-	while (s[i] && i < n)
-		i++;
-	while (i >= 0)
-	{
-		d[i] = s[i];
-		i--;
-	}
-	d[i] = '\0';
-	return (dst);
-}
-int main(void)
-{
-	char src[] = "Hello";
-	char dst[10];
+# define FT_INT_MIN -2147483648
+# define FT_INT_MAX 2147483647
 
-	ft_memmove(dst, src, 7);
-	printf("%s", dst);
-	return(0);
-}
+size_t ft_strlen(const char *s);
 
+#endif
